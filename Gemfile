@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-group :production do
-  gem 'pg'
-end
 
-# Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3', '~> 1.4'
-end
+gem 'pg'
+
+# group :development do
+#   gem 'pg'
+# end
+# group :production do
+# end
+# Use pg as the database for Active Record
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,6 +39,7 @@ end
 
 group :development do
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

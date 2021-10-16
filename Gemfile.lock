@@ -93,6 +93,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x64-mingw32)
       racc (~> 1.4)
+    pg (1.2.3-x64-mingw32)
     puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -133,11 +134,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.3)
+    tzinfo-data (1.2021.4)
       tzinfo (>= 1.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -152,13 +152,13 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   faker!
+  pg
   puma (~> 5.0)
   rails (~> 6.1.4, >= 6.1.4.1)
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.22
+   2.2.29

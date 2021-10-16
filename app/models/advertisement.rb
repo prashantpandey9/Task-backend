@@ -1,5 +1,5 @@
 class Advertisement < ApplicationRecord
-    has_many :user
+    # has_many :user
     validates :title, presence: true
     validates :body, presence: true
 end
