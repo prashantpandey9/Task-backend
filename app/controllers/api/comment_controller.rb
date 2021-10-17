@@ -10,7 +10,7 @@ module Api
             if comment.exists?(conditions = :none)
                 render json: {status: "SUCCESS", message: "Comment Found", data: comment }, status: :ok
             else
-                render json: {status: "ERRORS", message: "Comment Not Found", data: comment.errors}, status: :ok
+                render json: {status: "ERRORS", message: "Comment Not Found", data: []}, status: :ok
             end
         end
 
