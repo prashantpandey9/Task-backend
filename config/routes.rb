@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :user_marketings
   namespace 'api' do
     resources :advertisements, :auth, :comment
+    scope '/advertisements' do
+      patch "publish/:id" => "advertisements#publish"
+      post "create_adds/:email" => "advertisements#create_adds"
+      get "get_user_adds/:id" => "advertisements#get_user_adds"
+    end
     scope '/auth' do
       post "login" => "auth#login"
       post "register" => "auth#register"
