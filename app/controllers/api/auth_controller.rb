@@ -15,13 +15,13 @@ module Api
         end
 
         def login 
-            
-            puts "hello#{users_params}........ #{users_params["password_digest"]}.......#{params}"
-            user =  User.find_by(email: params[:auth][:email]).try(:authenticate,params[:auth][:password]) 
-            if user 
-                render json: { status: "SUCCESS", message: "User Successfully logged In", data: user}, status: :ok
+            email = users_params[:email]
+            password = users_params[:password]
+            user = User.find_by(email: email )
+            if user && user.authenticate(password)
+                render json: { status: "SUCCESS", message: "User Successfully logged In", data: user }, status: :ok
             else 
-                render json: { status: "ERRORS", message: "User Login Failed", data: user.errors}, status: :unprocessable_entity
+                render json: { status: "ERRORS", message: "User Login Failed", data: [] }, status: :unprocessable_entity
             end
         end
 
