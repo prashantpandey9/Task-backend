@@ -4,4 +4,5 @@ class Advertisement < ApplicationRecord
     validates :body, presence: true
     belongs_to :user 
     attribute :is_published, :boolean, default: false
+    attribute :user, null: true
 end
