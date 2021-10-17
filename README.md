@@ -1,24 +1,19 @@
-# README
+# Advertisement
+## Local Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Frontend Setup
+- Clone frontend repo
+https://github.com/prashantpandey9/advertisement.git
 
-Things you may want to cover:
+- ```cd advertiser```
+- ```yarn```
+- ```yarn start```
 
-* Ruby version
+### Backend Setup
+- Cline backend repo
+https://github.com/prashantpandey9/Task-backend.git
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- ```bundle install```
+- ```rails db:migrate```
+- ```rails db:seed```
+- ```rails s```
