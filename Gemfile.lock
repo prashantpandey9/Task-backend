@@ -93,11 +93,14 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x64-mingw32)
       racc (~> 1.4)
-    pg (1.2.3-x64-mingw32)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4.1)
@@ -134,6 +137,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -146,19 +150,21 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   faker!
-  pg
   puma (~> 5.0)
+  rack-cors
   rails (~> 6.1.4, >= 6.1.4.1)
+  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.4p191
+   ruby 3.0.2p107
 
 BUNDLED WITH
    2.2.29

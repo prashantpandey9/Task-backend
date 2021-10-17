@@ -16,7 +16,7 @@ module Api
 
         def update 
             advertisement = Advertisement.find(params[:id])
-            if advertisement.update_attribute(advertisements_params) 
+            if advertisement.update(advertisements_params) 
                 render json: {status: 'SUCCESS', message: 'Advertisement updated successfully', data: advertisement}, status: :ok
             else
                 render json: {status: 'ERROR', message: 'Advertisement updation failed', data: advertisement.errors }, status: :unprocessable_entity

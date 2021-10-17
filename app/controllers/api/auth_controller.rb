@@ -15,6 +15,7 @@ module Api
         end
 
         def login 
+            
             puts "hello#{users_params}........ #{users_params["password_digest"]}.......#{params}"
             user =  User.find_by(email: params[:auth][:email]).try(:authenticate,params[:auth][:password]) 
             if user 
