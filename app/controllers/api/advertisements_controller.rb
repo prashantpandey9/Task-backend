@@ -16,12 +16,12 @@ module Api
         end
 
         def create_adds 
-            user = User.find( params[:id])
-            puts "create add #{user}"
+            user = User.find_by( id: params[:id])
             if !user
                 render json: {status: 'ERROR', message: 'Advertisement creation failed', data: [] }, status: :unprocessable_entity
             else
-                new_advertisement = Advertisement.new(title: advertisements_params[:title], body: advertisements_params[:body], user: user, is_published:  advertisements_params[:is_published])
+                new_advertisement = Advertisement.new(title: advertisements_params[:title], body: advertisements_params[:body],
+                     user: user, is_published:  advertisements_params[:is_published])
                 if new_advertisement.save 
                     render json: {status: 'SUCCESS', message: 'Advertisement created successfully', data: new_advertisement}, status: :ok
                 else
@@ -31,8 +31,8 @@ module Api
         end
     
         def publish
-            publish_add = Advertisement.find(params[:id])
-            if publish_add.update_attribute( :is_published, true )
+            publish_add = Advertisement.find_by(id: params[:id])
+            if publish_add && publish_add.update_attribute( :is_published, true )
                 render json: {status: 'SUCCESS', message: 'Advertisement Published successfully', data: publish_add}, status: :ok
             else
                 render json: {status: "ERRORS", message: "Something went wrong", data: []}, status: :unprocessable_entity
@@ -40,9 +40,9 @@ module Api
         end
 
         def update 
-            advertisement = Advertisement.find(params[:id])
+            advertisement = Advertisement.find_by(id: params[:id])
             puts "advertisement---#{advertisement}"
-            if advertisement.update(advertisements_params) 
+            if advertisement && advertisement.update(advertisements_params) 
                 render json: {status: 'SUCCESS', message: 'Advertisement updated successfully', data: advertisement}, status: :ok
             else
                 render json: {status: 'ERROR', message: 'Advertisement updation failed', data: advertisement.errors }, status: :unprocessable_entity
@@ -50,10 +50,14 @@ module Api
         end
 
         def destroy 
-            advertisement = Advertisement.find(params[:id])
-            advertisement.destroy
-            render json: {status: 'SUCCESS', message: 'Advertisement deleted successfully', data: advertisement}, status: :ok
+            advertisement = Advertisement.find_by(id: params[:id])
+            if advertisement
+                advertisement.destroy
+                render json: {status: 'SUCCESS', message: 'Advertisement deleted successfully', data: advertisement}, status: :ok
+            else
+                render json: {status: 'ERROR', message: 'Something went wrong', data: [] }, status: :unprocessable_entity
 
+            end
 
         end
 
