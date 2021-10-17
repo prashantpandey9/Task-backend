@@ -1,4 +1,6 @@
 # Advertisement
+![Home](1.png)
+![Home](2.png)
 ## Local Setup
 
 ### Frontend Setup
@@ -8,7 +10,6 @@ https://github.com/prashantpandey9/advertisement.git
 - ```cd advertiser```
 - ```yarn```
 - ```yarn start```
-
 ### Backend Setup
 - Cline backend repo
 https://github.com/prashantpandey9/Task-backend.git
