@@ -5,6 +5,15 @@ module Api
             render json: {status: 'SUCCESS', message: 'Loaded Advertisements', data: advertisements }, status: :ok
         end
         
+        def get
+            advertisement = Advertisement.find(params[:id])
+            if advertisement
+                render json: {status: "SUCCESS", message: "Advertisement Found", data: advertisement }, status: :ok
+            else
+                render json: {status: "ERRORS", message: "Advertisement Not Found", data: advertisement.errors}, status: :ok
+            end
+        end
+
         def create 
             new_advertisement = Advertisement.new(advertisements_params)
             if new_advertisement.save 
@@ -16,6 +25,7 @@ module Api
 
         def update 
             advertisement = Advertisement.find(params[:id])
+            puts "advertisement---#{advertisement}"
             if advertisement.update(advertisements_params) 
                 render json: {status: 'SUCCESS', message: 'Advertisement updated successfully', data: advertisement}, status: :ok
             else
