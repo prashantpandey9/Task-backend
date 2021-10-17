@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :advertisements, :auth, :comment
     scope '/advertisements' do
       patch "publish/:id" => "advertisements#publish"
-      post "create_adds/:email" => "advertisements#create_adds"
+      post "create_adds/:id" => "advertisements#create_adds"
       get "get_user_adds/:id" => "advertisements#get_user_adds"
     end
     scope '/auth' do

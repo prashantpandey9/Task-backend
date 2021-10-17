@@ -6,23 +6,22 @@ module Api
             render json: {status: 'SUCCESS', message: 'Loaded Advertisements', data: advertisements }, status: :ok
         end
         
-        def get
-            advertisement = Advertisement.find(params[:id])
+        def show
+            advertisement = Advertisement.find_by_id(params[:id])
             if advertisement
                 render json: {status: "SUCCESS", message: "Advertisement Found", data: advertisement }, status: :ok
             else
-                render json: {status: "ERRORS", message: "Advertisement Not Found", data: advertisement.errors}, status: :ok
+                render json: {status: "ERRORS", message: "Advertisement Not Found", data: []}, status: :ok
             end
         end
 
         def create_adds 
-            user = User.find_by_email(params[:email])
+            user = User.find( params[:id])
             puts "create add #{user}"
             if !user
                 render json: {status: 'ERROR', message: 'Advertisement creation failed', data: [] }, status: :unprocessable_entity
             else
                 new_advertisement = Advertisement.new(title: advertisements_params[:title], body: advertisements_params[:body], user: user, is_published:  advertisements_params[:is_published])
-
                 if new_advertisement.save 
                     render json: {status: 'SUCCESS', message: 'Advertisement created successfully', data: new_advertisement}, status: :ok
                 else

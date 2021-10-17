@@ -5,12 +5,13 @@ module Api
             add = Advertisement.find_by_id(params[:id])
             if !add
                 render json: {status: 'ERROR', message: 'Something went wrong', data: [] }, status: :unprocessable_entity
-            end
-            comment = Comment.where( advertisement: add)
-            if comment.exists?(conditions = :none)
-                render json: {status: "SUCCESS", message: "Comment Found", data: comment }, status: :ok
             else
-                render json: {status: "ERRORS", message: "Comment Not Found", data: comment.errors}, status: :ok
+                comment = Comment.where( advertisement: add)
+                if comment.exists?(conditions = :none)
+                    render json: {status: "SUCCESS", message: "Comment Found", data: comment }, status: :ok
+                else
+                    render json: {status: "ERRORS", message: "Comment Not Found", data: []}, status: :ok
+                end
             end
         end
 
